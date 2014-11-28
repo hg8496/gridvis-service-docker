@@ -6,16 +6,22 @@ RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 CMD ["/sbin/my_init"]
 
 ADD keys.pub /tmp/your_key.pub
-RUN cat /tmp/your_key.pub >> /root/.ssh/authorized_keys && rm -f /tmp/your_key.pub
 
-RUN apt-get update
-RUN apt-get dist-upgrade -y
-RUN apt-get install -y wget
 ENV VERSION 5.1.1
-RUN  wget -q -O service.sh http://gridvis.janitza.de/download/$VERSION/GridVis-Service-$VERSION-64bit.sh && sh service.sh -q && rm service.sh && ln -s /opt/GridVisData/license2.lic /usr/local/GridVisService/license2.lic 
+
+RUN cat /tmp/your_key.pub >> /root/.ssh/authorized_keys \
+    && rm -f /tmp/your_key.pub \
+    && apt-get update \
+    && apt-get dist-upgrade -y \
+    && apt-get install -y wget \
+    && wget -q -O service.sh http://gridvis.janitza.de/download/$VERSION/GridVis-Service-$VERSION-64bit.sh \
+    && sh service.sh -q \
+    && rm service.sh \
+    && ln -s /opt/GridVisData/license2.lic /usr/local/GridVisService/license2.lic \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 VOLUME ["/opt/GridVisData", "/opt/GridVisProjects"]
 ADD gridvis-service.sh /etc/service/gridvis-service/run
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 EXPOSE 8080 22
 
