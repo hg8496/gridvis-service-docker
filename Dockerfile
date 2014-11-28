@@ -11,7 +11,7 @@ RUN cat /tmp/your_key.pub >> /root/.ssh/authorized_keys && rm -f /tmp/your_key.p
 RUN apt-get update
 RUN apt-get dist-upgrade -y
 RUN apt-get install -y wget
-ENV VERSION 5.1.1-m1
+ENV VERSION 5.1.1
 RUN  wget -q -O service.sh http://gridvis.janitza.de/download/$VERSION/GridVis-Service-$VERSION-64bit.sh && sh service.sh -q && rm service.sh && ln -s /opt/GridVisData/license2.lic /usr/local/GridVisService/license2.lic 
 
 VOLUME ["/opt/GridVisData", "/opt/GridVisProjects"]
