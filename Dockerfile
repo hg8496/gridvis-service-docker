@@ -7,7 +7,7 @@ CMD ["/sbin/my_init"]
 
 ADD keys.pub /tmp/your_key.pub
 
-ENV VERSION 5.1.4-m3
+ENV VERSION 5.1.4
 
 RUN cat /tmp/your_key.pub >> /root/.ssh/authorized_keys \
     && rm -f /tmp/your_key.pub \
