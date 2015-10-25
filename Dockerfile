@@ -1,11 +1,7 @@
-FROM phusion/baseimage:0.9.15
+FROM ubuntu:14.04
 MAINTAINER Christian Stolz <hg8496@cstolz.de>
 
 ENV HOME /root
-RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
-CMD ["/sbin/my_init"]
-
-ADD keys.pub /tmp/your_key.pub
 
 ENV VERSION 7.0.0-m2
 
@@ -22,6 +18,7 @@ RUN cat /tmp/your_key.pub >> /root/.ssh/authorized_keys \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 VOLUME ["/opt/GridVisData", "/opt/GridVisProjects"]
-ADD gridvis-service.sh /etc/service/gridvis-service/run
-EXPOSE 8080 22
+ADD gridvis-service.sh /gridvis-service.sh
+EXPOSE 8080
+CMD ["/gridvis-service.sh"]
 
