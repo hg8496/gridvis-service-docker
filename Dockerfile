@@ -16,6 +16,9 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+ENV USER_TIMEZONE UTC
+ENV USER_LANG en
+
 VOLUME ["/opt/GridVisData", "/opt/GridVisProjects"]
 ADD gridvis-service.sh /gridvis-service.sh
 EXPOSE 8080
