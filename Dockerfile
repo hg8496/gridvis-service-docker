@@ -5,9 +5,7 @@ ENV HOME /root
 
 ENV VERSION 7.0.0-m2
 
-RUN cat /tmp/your_key.pub >> /root/.ssh/authorized_keys \
-    && rm -f /tmp/your_key.pub \
-    && apt-get update \
+RUN apt-get update \
     && apt-get dist-upgrade -y \
     && apt-get install -y wget \
     && wget -q -O service.sh http://gridvis.janitza.de/download/$VERSION/GridVis-Service-$VERSION-64bit.sh \
