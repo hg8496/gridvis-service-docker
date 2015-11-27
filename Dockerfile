@@ -3,7 +3,7 @@ MAINTAINER Christian Stolz <hg8496@cstolz.de>
 
 ENV HOME /root
 
-ENV VERSION 7.0.0-m8
+ENV VERSION 7.0.0-rc1
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
