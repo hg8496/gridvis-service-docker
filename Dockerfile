@@ -13,7 +13,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && sh service.sh -q \
     && rm service.sh \
     && ln -s /opt/GridVisData/license2.lic /usr/local/GridVisService/license2.lic \
-    && chmod -R ugo-w /usr/local/GridVisService
+    && chmod -R ugo-w /usr/local/GridVisService \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
