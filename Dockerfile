@@ -20,6 +20,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 
 ENV USER_TIMEZONE UTC
 ENV USER_LANG en
+ENV FEATURE_TOGGLES NONE
 
 VOLUME ["/opt/GridVisData", "/opt/GridVisProjects"]
 ADD gridvis-service.sh /gridvis-service.sh
