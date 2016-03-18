@@ -17,6 +17,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && sh service.sh -q \
     && rm service.sh \
     && ln -s /opt/GridVisData/security.properties /usr/local/GridVisService/security.properties \
+    && sed -i 's#default_userdir.*$#default_userdir=/opt/GridVisData#' /usr/local/GridVisService/etc/server.conf \
     && chmod -R a-w /usr/local/GridVisService \
     && apt-get clean \
     && echo "gridvis ALL=NOPASSWD: /usr/local/bin/own-volume" >> /etc/sudoers \
