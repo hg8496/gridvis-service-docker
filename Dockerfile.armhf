@@ -5,6 +5,7 @@ ENV HOME /root
 
 ENV VERSION 7.1.0-m2
 
+COPY response.varfile.armhf /response.varfile.armhf
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
     && apt-get dist-upgrade -y \
@@ -14,10 +15,11 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
     && apt-get -y install oracle-java8-installer \
     && wget -q -O service.sh http://gridvis.janitza.de/download/$VERSION/GridVis-Service-$VERSION-unix.sh \
-    && sh service.sh -q \
+    && sh service.sh -q -varfile /response.varfile.armhf \
     && rm service.sh \
     && ln -s /opt/GridVisData/security.properties /usr/local/GridVisService/security.properties \
     && sed -i 's#default_userdir.*$#default_userdir=/opt/GridVisData#' /usr/local/GridVisService/etc/server.conf \
+    && adduser --system --group gridvis \
     && chmod -R a-w /usr/local/GridVisService \
     && apt-get clean \
     && echo "gridvis ALL=NOPASSWD: /usr/local/bin/own-volume" >> /etc/sudoers \
@@ -32,6 +34,6 @@ ADD gridvis-service.sh /gridvis-service.sh
 ADD own-volume.sh /usr/local/bin/own-volume
 
 EXPOSE 8080
-#USER gridvis
+USER gridvis
 CMD ["/gridvis-service.sh"]
 
