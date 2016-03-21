@@ -17,7 +17,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && wget -q -O service.sh http://gridvis.janitza.de/download/$VERSION/GridVis-Service-$VERSION-unix.sh \
     && sh service.sh -q -varfile /response.varfile.armhf \
     && rm service.sh \
-    && ln -s /opt/GridVisData/security.properties /usr/local/GridVisService/security.properties \
+    && ln -s /opt/GridVisData/security.properties /opt/security.properties \
     && sed -i 's#default_userdir.*$#default_userdir=/opt/GridVisData#' /usr/local/GridVisService/etc/server.conf \
     && adduser --system --group gridvis \
     && chmod -R a-w /usr/local/GridVisService \
