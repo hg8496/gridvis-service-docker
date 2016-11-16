@@ -3,7 +3,7 @@ MAINTAINER Christian Stolz <hg8496@cstolz.de>
 
 ENV HOME /root
 
-ENV VERSION 7.1.6-m3
+ENV VERSION 7.1.6-m4
 
 COPY response.varfile.armhf /response.varfile.armhf
 RUN export DEBIAN_FRONTEND=noninteractive \
