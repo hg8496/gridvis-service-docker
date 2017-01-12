@@ -2,7 +2,7 @@ FROM alpine:3.4
 
 ENV HOME /root
 
-ENV VERSION 7.1.7-nightly
+ENV VERSION 7.1.8-nightly
 
 COPY response.varfile /response.varfile
 RUN apk add --no-cache openjdk8-jre fontconfig ttf-ubuntu-font-family wget gzip
@@ -21,8 +21,8 @@ ENV USER_LANG en
 ENV FEATURE_TOGGLES NONE
 
 VOLUME ["/opt/GridVisData", "/opt/GridVisProjects"]
-ADD gridvis-service.sh /gridvis-service.sh
-ADD own-volume.sh /usr/local/bin/own-volume
+COPY gridvis-service.sh /gridvis-service.sh
+COPY own-volume.sh /usr/local/bin/own-volume
 
 EXPOSE 8080
 USER gridvis
