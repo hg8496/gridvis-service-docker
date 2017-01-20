@@ -3,7 +3,7 @@ MAINTAINER Christian Stolz <hg8496@cstolz.de>
 
 ENV HOME /root
 
-ENV VERSION 7.2.1
+ENV VERSION 7.1.8
 
 COPY response.varfile.armhf /response.varfile.armhf
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -11,7 +11,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get dist-upgrade -y \
     && apt-get install -y wget software-properties-common\
     && echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections \
-    && add-apt-repository -y ppa:webupd8team/java \ 
+    && add-apt-repository -y ppa:webupd8team/java \
     && apt-get update \
     && apt-get -y install oracle-java8-installer sudo \
     && wget -q -O service.sh http://gridvis.janitza.de/download/$VERSION/GridVis-Service-$VERSION-unix.sh \
@@ -36,4 +36,3 @@ ADD own-volume.sh /usr/local/bin/own-volume
 EXPOSE 8080
 USER gridvis
 CMD ["/gridvis-service.sh"]
-
