@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 
 ENV HOME /root
 
-ENV VERSION 7.1.11
+ENV VERSION 7.2.3
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
