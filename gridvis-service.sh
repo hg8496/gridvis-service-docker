@@ -3,8 +3,8 @@
 FEATURE_PARAMS=''
 if [ $FEATURE_TOGGLES != "NONE" ]
 then
-    IFS=';' read -ra ADDR <<< "$FEATURE_TOGGLES"
-    for i in "${ADDR[@]}"; do
+    IFS=';'
+    for i in $FEATURE_TOOGLES; do
         FEATURE_PARAMS="$FEATURE_PARAMS -J-D${i}=true"
     done
 fi
