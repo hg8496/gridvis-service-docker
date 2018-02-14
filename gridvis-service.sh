@@ -1,7 +1,5 @@
 #!/bin/sh
 
-sudo own-volume
-
 FEATURE_PARAMS=''
 if [ $FEATURE_TOGGLES != "NONE" ]
 then
