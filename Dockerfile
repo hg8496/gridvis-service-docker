@@ -9,7 +9,6 @@ RUN apk add --no-cache openjdk8-jre fontconfig ttf-ubuntu-font-family wget gzip 
 RUN wget -q -O service.sh http://gridvis.janitza.de/download/${VERSION}/GridVis-Service-${VERSION}-unix.sh \
     && sh service.sh -q -varfile /response.varfile \
     && rm service.sh \
-    && mkdir /opt \
     && ln -s /opt/GridVisData/security.properties /opt/security.properties \
     && sed -i 's#default_userdir.*$#default_userdir=/opt/GridVisData#' /usr/local/GridVisService/etc/server.conf \
     && adduser -S  gridvis gridvis \
