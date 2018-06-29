@@ -2,7 +2,7 @@ FROM alpine:3.7
 
 ENV HOME /root
 
-ENV VERSION 7.2.103
+ENV VERSION 7.3.0
 
 COPY response.varfile /response.varfile
 RUN apk add --no-cache openjdk8-jre fontconfig ttf-ubuntu-font-family wget gzip bash
