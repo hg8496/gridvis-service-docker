@@ -15,9 +15,13 @@ COPY --from=builder /usr/local/GridVisService /usr/local/GridVisService
 
 RUN [ "cross-build-start" ]
 RUN apk add --no-cache fontconfig ttf-ubuntu-font-family
-RUN ln -s /opt/GridVisData/security.properties /opt/security.properties \
+RUN mkdir -p /opt/GridVisData \
+    && mkdir -p /opt/GridVisProjects \
+    && ln -s /opt/GridVisData/security.properties /opt/security.properties \
     && sed -i 's#default_userdir.*$#default_userdir=/opt/GridVisData#' /usr/local/GridVisService/etc/server.conf \
+    && addgroup -S gridvis \
     && adduser -S  gridvis gridvis \
+    && chown gridvis:gridvis /opt/GridVisData /opt/GridVisProjects \
     && chmod -R a-w /usr/local/GridVisService
 
 ENV USER_TIMEZONE UTC
@@ -28,7 +32,9 @@ VOLUME ["/opt/GridVisData", "/opt/GridVisProjects"]
 COPY gridvis-service.sh /gridvis-service.sh
 
 EXPOSE 8080
+
+RUN [ "cross-build-end" ]
+
 USER gridvis
 CMD ["/gridvis-service.sh"]
 
-RUN [ "cross-build-end" ]
