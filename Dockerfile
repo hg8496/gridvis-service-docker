@@ -14,7 +14,7 @@ FROM balenalib/armv7hf-alpine-openjdk:8--3.7-run
 COPY --from=builder /usr/local/GridVisService /usr/local/GridVisService
 
 RUN [ "cross-build-start" ]
-RUN apk add --no-cache fontconfig ttf-ubuntu-font-family
+RUN apk add --no-cache fontconfig ttf-ubuntu-font-family bash
 RUN mkdir -p /opt/GridVisData \
     && mkdir -p /opt/GridVisProjects \
     && ln -s /opt/GridVisData/security.properties /opt/security.properties \
@@ -22,11 +22,12 @@ RUN mkdir -p /opt/GridVisData \
     && addgroup -S gridvis \
     && adduser -S  gridvis gridvis \
     && chown gridvis:gridvis /opt/GridVisData /opt/GridVisProjects \
-    && chmod -R a-w /usr/local/GridVisService
+    && chmod a-w /usr/local/GridVisService
 
 ENV USER_TIMEZONE UTC
 ENV USER_LANG en
 ENV FEATURE_TOGGLES NONE
+ENV LANG=en_US.UTF-8
 
 VOLUME ["/opt/GridVisData", "/opt/GridVisProjects"]
 COPY gridvis-service.sh /gridvis-service.sh
