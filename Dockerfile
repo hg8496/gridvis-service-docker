@@ -1,4 +1,6 @@
-FROM alpine:3.7
+FROM balenalib/armv7hf-alpine:edge
+
+RUN [ "cross-build-start" ]
 
 ENV HOME /root
 
@@ -12,8 +14,7 @@ RUN wget -q -O service.sh http://gridvis.janitza.de/download/${VERSION}/GridVis-
     && ln -s /opt/GridVisData/security.properties /opt/security.properties \
     && sed -i 's#default_userdir.*$#default_userdir=/opt/GridVisData#' /usr/local/GridVisService/etc/server.conf \
     && adduser -S  gridvis gridvis \
-    && chmod -R a-w /usr/local/GridVisService \
-    && echo "gridvis ALL=NOPASSWD: /usr/local/bin/own-volume" >> /etc/sudoers
+    && chmod -R a-w /usr/local/GridVisService
 
 ENV USER_TIMEZONE UTC
 ENV USER_LANG en
@@ -21,8 +22,9 @@ ENV FEATURE_TOGGLES NONE
 
 VOLUME ["/opt/GridVisData", "/opt/GridVisProjects"]
 COPY gridvis-service.sh /gridvis-service.sh
-COPY own-volume.sh /usr/local/bin/own-volume
 
 EXPOSE 8080
 USER gridvis
 CMD ["/gridvis-service.sh"]
+
+RUN [ "cross-build-end" ]
