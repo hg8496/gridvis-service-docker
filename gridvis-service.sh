@@ -9,7 +9,7 @@ then
     done
 fi
 GROOVY_PARAM=''
-if [ -n "$STARTUP_GROOVY" -a "$STARTUP_GROOVY" != "NONE" ]
+if [ -n "$STARTUP_GROOVY" ] && [ "$STARTUP_GROOVY" != "NONE" ]
 then                                                                           
     GROOVY_PARAM="--groovy $STARTUP_GROOVY"                         
 fi
