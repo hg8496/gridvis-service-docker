@@ -2,25 +2,29 @@ FROM alpine:3.7
 
 ENV HOME /root
 
-ENV VERSION 7.3.62
+ENV VERSION 7.3.63
 
 COPY response.varfile /response.varfile
 RUN apk add --no-cache openjdk8-jre fontconfig ttf-ubuntu-font-family wget gzip bash
-RUN wget -q -O service.sh http://gridvis.janitza.de/download/${VERSION}/GridVis-Service-${VERSION}-unix.sh \
-    && sh service.sh -q -varfile /response.varfile \
-    && rm service.sh \
+RUN wget -q -O hub.sh http://gridvis.janitza.de/download/hub-unix.sh \
+    && sh hub.sh -q -varfile /response.varfile \
+    && rm hub.sh \
     && ln -s /opt/GridVisData/security.properties /opt/security.properties \
-    && sed -i 's#default_userdir.*$#default_userdir=/opt/GridVisData#' /usr/local/GridVisService/etc/server.conf \
+    && sed -i 's#default_userdir.*$#default_userdir=/opt/GridVisHubData#' /usr/local/GridVisHub/etc/hub.conf \
     && addgroup -S gridvis \
     && adduser -S  gridvis gridvis
+RUN mkdir -p /opt/GridVisHubData \
+    && mkdir -p /opt/GridVisProjects \
+    && chown gridvis:gridvis /opt/GridVis*
 
 ENV USER_TIMEZONE UTC
 ENV USER_LANG en
 ENV FEATURE_TOGGLES NONE
 
-VOLUME ["/opt/GridVisData", "/opt/GridVisProjects"]
-COPY gridvis-service.sh /gridvis-service.sh
+COPY gridvis-hub.sh /gridvis-hub.sh
+
+USER gridvis
+VOLUME ["/opt/GridVisHubData", "/opt/GridVisProjects"]
 
 EXPOSE 8080
-USER gridvis
-CMD ["/gridvis-service.sh"]
+CMD ["/gridvis-hub.sh"]

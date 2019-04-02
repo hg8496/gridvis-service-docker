@@ -2,7 +2,7 @@
 #Mon Mar 21 19:58:52 UTC 2016
 sys.languageId=en
 sys.adminRights$Boolean=true
-sys.installationDir=/usr/local/GridVisService
+sys.installationDir=/usr/local/GridVisHub
 maxHeapSize$Integer=1024
-serverDataDir=/opt/GridVisData
+serverDataDir=/opt/GridVisiHubData
 PORT$Long=8080
