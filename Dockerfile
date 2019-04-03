@@ -36,5 +36,5 @@ EXPOSE 8080
 RUN [ "cross-build-end" ]
 
 USER gridvis
-CMD ["/gridvis-service.sh"]
+CMD ["/gridvis-hub.sh"]
 
