@@ -2,11 +2,11 @@ FROM alpine:3.7
 
 ENV HOME /root
 
-ENV VERSION 7.3.63
+ENV VERSION 7.3.63-m0
 
 COPY response.varfile /response.varfile
 RUN apk add --no-cache openjdk8-jre fontconfig ttf-ubuntu-font-family wget gzip bash
-RUN wget -q -O hub.sh http://gridvis.janitza.de/download/hub-unix.sh \
+RUN wget -q -O hub.sh http://gridvis.janitza.de/download/${VERSION}/hub-${VERSION}-unix.sh \
     && sh hub.sh -q -varfile /response.varfile \
     && rm hub.sh \
     && ln -s /opt/GridVisData/security.properties /opt/security.properties \
