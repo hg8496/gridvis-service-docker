@@ -1,12 +1,12 @@
 FROM alpine:3.7 AS builder
 
 ENV HOME /root
-ENV VERSION 7.3.62
+ENV VERSION 7.3.63-m0
 
 COPY response.varfile /response.varfile
 
 RUN apk add --no-cache openjdk8-jre fontconfig ttf-ubuntu-font-family wget gzip bash
-RUN wget -q -O hub.sh http://gridvis.janitza.de/download/hub-unix.sh
+RUN wget -q -O hub.sh http://gridvis.janitza.de/download/${VERSION}/hub-${VERSION}-unix.sh
 RUN sh hub.sh -q -varfile /response.varfile
 
 FROM balenalib/armv7hf-alpine-openjdk:8--3.7-run
