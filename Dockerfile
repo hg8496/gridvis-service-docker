@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM alpine:3.9
 
 ENV HOME /root
 
@@ -12,8 +12,8 @@ RUN wget -q -O hub.sh http://gridvis.janitza.de/download/${VERSION}/hub-${VERSIO
     && ln -s /opt/GridVisData/security.properties /opt/security.properties \
     && sed -i 's#default_userdir.*$#default_userdir=/opt/GridVisHubData#' /usr/local/GridVisHub/etc/hub.conf \
     && addgroup -S gridvis \
-    && adduser -S  gridvis gridvis
-RUN mkdir -p /opt/GridVisHubData \
+    && addgroup -S  gridvis gridvis \
+    && mkdir -p /opt/GridVisHubData \
     && mkdir -p /opt/GridVisProjects \
     && chown gridvis:gridvis /opt/GridVis*
 
