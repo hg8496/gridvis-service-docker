@@ -12,7 +12,7 @@ RUN wget -q -O service.sh http://gridvis.janitza.de/download/${VERSION}/GridVis-
     && ln -s /opt/GridVisData/security.properties /opt/security.properties \
     && sed -i 's#default_userdir.*$#default_userdir=/opt/GridVisData#' /usr/local/GridVisService/etc/server.conf \
     && addgroup -S gridvis \
-    && adduser -S  gridvis gridvis
+    && addgroup -S  gridvis gridvis
 
 ENV USER_TIMEZONE UTC
 ENV USER_LANG en
