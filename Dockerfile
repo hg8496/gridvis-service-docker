@@ -2,7 +2,11 @@ FROM ubuntu:14.04
 
 ENV HOME /root
 
+<<<<<<< HEAD
 ENV VERSION 7.3.102
+=======
+ENV VERSION 7.3.102
+>>>>>>> 2752ee9438b3d2c4ac52fe3d5d785d7cb8f0f76d
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
