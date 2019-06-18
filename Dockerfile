@@ -1,7 +1,11 @@
 FROM alpine:3.9 AS builder
 
 ENV HOME /root
+<<<<<<< HEAD
 ENV VERSION 7.3.102
+=======
+ENV VERSION 7.3.102
+>>>>>>> 4c1edc6c5c535ff12f1036ef9a8a0a065b55e35d
 
 COPY response.varfile /response.varfile
 
