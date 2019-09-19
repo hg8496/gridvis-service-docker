@@ -6,7 +6,7 @@ ENV VERSION 7.4.0
 COPY response.varfile /response.varfile
 
 RUN apk add --no-cache openjdk8-jre fontconfig ttf-ubuntu-font-family wget gzip bash
-RUN wget -q -O hub.sh http://gridvis.janitza.de/download/${VERSION}/hub-${VERSION}-unix.sh
+RUN wget -q -O hub.sh http://gridvis.janitza.de/download/${VERSION}/GridVis-Hub-${VERSION}-unix.sh
 RUN sh hub.sh -q -varfile /response.varfile
 
 FROM balenalib/armv7hf-alpine-openjdk:8--3.9-run
