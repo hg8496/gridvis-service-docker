@@ -1,4 +1,4 @@
-FROM alpine:3.7 AS builder
+FROM alpine:3.10 AS builder
 
 ENV HOME /root
 ENV VERSION 7.4.1
@@ -9,7 +9,7 @@ RUN apk add --no-cache openjdk8-jre fontconfig ttf-ubuntu-font-family wget gzip 
 RUN wget -q -O service.sh http://gridvis.janitza.de/download/${VERSION}/GridVis-Service-${VERSION}-unix.sh
 RUN sh service.sh -q -varfile /response.varfile
 
-FROM balenalib/armv7hf-alpine-openjdk:8--3.7-run
+FROM balenalib/armv7hf-alpine-openjdk:8--3.10-run
 
 COPY --from=builder /usr/local/GridVisService /usr/local/GridVisService
 
