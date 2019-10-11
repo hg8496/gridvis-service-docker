@@ -1,4 +1,4 @@
-FROM alpine:3.10 AS builder
+FROM alpine:3.9 AS builder
 
 ENV HOME /root
 ENV VERSION 7.4.4
@@ -9,7 +9,7 @@ RUN apk add --no-cache openjdk8-jre fontconfig ttf-ubuntu-font-family wget gzip 
 RUN wget -q -O hub.sh http://gridvis.janitza.de/download/${VERSION}/GridVis-Hub-${VERSION}-unix.sh
 RUN sh hub.sh -q -varfile /response.varfile
 
-FROM balenalib/armv7hf-alpine-openjdk:8--3.10-run
+FROM balenalib/armv7hf-alpine-openjdk:8--3.9-run
 
 COPY --from=builder /usr/local/GridVisHub /usr/local/GridVisHub
 
