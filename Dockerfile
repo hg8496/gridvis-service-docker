@@ -12,6 +12,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && sh service.sh -q \
     && rm service.sh \
     && ln -s /opt/GridVisData/security.properties /opt/security.properties \
+    && ln -s /opt/GridVisData/license2.lic /usr/local/GridVisService/license2.lic \
     && chmod -R a-w /usr/local/GridVisService \
     && apt-get clean \
     && echo "gridvis ALL=NOPASSWD: /usr/local/bin/own-volume" >> /etc/sudoers \
