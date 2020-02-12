@@ -27,6 +27,7 @@ ENV USER_TIMEZONE UTC
 ENV USER_LANG en
 ENV FEATURE_TOGGLES NONE
 ENV LANG=en_US.UTF-8
+ENV HUB_PARAMS NONE
 
 VOLUME ["/opt/GridVisData", "/opt/GridVisProjects"]
 COPY gridvis-hub.sh /gridvis-hub.sh
