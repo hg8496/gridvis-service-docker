@@ -14,7 +14,7 @@ FROM balenalib/armv7hf-debian-openjdk:8
 COPY --from=builder /usr/local/GridVisHub /usr/local/GridVisHub
 
 RUN [ "cross-build-start" ]
-RUN apk add --no-cache fontconfig ttf-ubuntu-font-family bash
+RUN install_packages fontconfig ttf-ubuntu-font-family bash
 RUN mkdir -p /opt/GridVisHubData \
     && mkdir -p /opt/GridVisProjects \
     && ln -s /opt/GridVisHubData/security.properties /opt/security.properties \
@@ -29,7 +29,7 @@ ENV FEATURE_TOGGLES NONE
 ENV LANG=en_US.UTF-8
 ENV HUB_PARAMS NONE
 
-VOLUME ["/opt/GridVisData", "/opt/GridVisProjects"]
+VOLUME ["/opt/GridVisHubData", "/opt/GridVisProjects"]
 COPY gridvis-hub.sh /gridvis-hub.sh
 
 EXPOSE 8080
