@@ -9,7 +9,7 @@ RUN apk add --no-cache openjdk8-jre fontconfig ttf-ubuntu-font-family wget gzip 
 RUN wget -q -O hub.sh http://gridvis.janitza.de/download/${VERSION}/GridVis-Hub-${VERSION}-unix.sh
 RUN sh hub.sh -q -varfile /response.varfile
 
-FROM balenalib/armv7hf-debian-openjdk:8
+FROM balenalib/armv7hf-ubuntu-openjdk:8
 
 COPY --from=builder /usr/local/GridVisHub /usr/local/GridVisHub
 
