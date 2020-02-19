@@ -19,8 +19,7 @@ RUN mkdir -p /opt/GridVisHubData \
     && mkdir -p /opt/GridVisProjects \
     && ln -s /opt/GridVisHubData/security.properties /opt/security.properties \
     && sed -i 's#default_userdir.*$#default_userdir=/opt/GridVisHubData#' /usr/local/GridVisHub/etc/hub.conf \
-    && addgroup -S gridvis \
-    && adduser -S  gridvis gridvis \
+    && useradd -r gridvis -u 101 -g 101 \
     && chown gridvis:gridvis /opt/GridVisHubData /opt/GridVisProjects
 
 ENV USER_TIMEZONE UTC
