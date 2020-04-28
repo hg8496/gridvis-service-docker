@@ -1,8 +1,9 @@
-#install4j response file for Janitza-GridVis Service 7.1.0-m2
-#Mon Mar 21 19:58:52 UTC 2016
-sys.languageId=en
+# install4j response file for Janitza-GridVis Service 7.4.82
 sys.adminRights$Boolean=true
 sys.installationDir=/usr/local/GridVisService
+sys.languageId=en
 maxHeapSize$Integer=512
 serverDataDir=/opt/GridVisData
 PORT$Long=8080
+isLicenseChecked$Boolean=true
+servicename=GridVis
