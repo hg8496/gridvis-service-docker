@@ -1,14 +1,15 @@
-FROM ubuntu:14.04
+FROM ubuntu:18.04
 
 ENV HOME /root
 
 ENV VERSION 7.4.105
 
+COPY response.varfile /response.varfile
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
     && apt-get dist-upgrade -y \
-    && apt-get install -y wget \
-    && wget -q -O service.sh http://gridvis.janitza.de/download/$VERSION/GridVis-Service-$VERSION-64bit.sh \
+    && apt-get install -y wget openjdk-8-jre fontconfig ttf-ubuntu-font-family \
+    && wget -q -O service.sh http://gridvis.janitza.de/download/$VERSION/GridVis-Service-$VERSION-unix.sh \
     && sh service.sh -q \
     && rm service.sh \
     && ln -s /opt/GridVisData/security.properties /opt/security.properties \

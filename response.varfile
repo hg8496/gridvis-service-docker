@@ -3,6 +3,6 @@
 sys.languageId=en
 sys.adminRights$Boolean=true
 sys.installationDir=/usr/local/GridVisService
-maxHeapSize$Integer=512
+maxHeapSize$Integer=1024
 serverDataDir=/opt/GridVisData
 PORT$Long=8080
