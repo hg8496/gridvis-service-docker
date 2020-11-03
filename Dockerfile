@@ -6,7 +6,7 @@ ENV VERSION 7.5.26
 
 COPY response.varfile /response.varfile
 RUN apk add --no-cache openjdk8-jre fontconfig ttf-ubuntu-font-family wget gzip bash
-RUN wget -q -O hub.sh http://gridvis.janitza.de/download/${VERSION}/GridVis-Hub-${VERSION}-unix.sh \
+RUN wget -q -O hub.sh https://gridvis.janitza.de/download/${VERSION}/GridVis-Hub-${VERSION}-unix.sh \
     && sh hub.sh -q -varfile /response.varfile \
     && rm hub.sh \
     && ln -s /opt/GridVisData/security.properties /opt/security.properties \
