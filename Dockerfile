@@ -6,7 +6,7 @@ ENV VERSION 7.5.26
 COPY response.varfile /response.varfile
 
 RUN apk add --no-cache openjdk8-jre fontconfig ttf-ubuntu-font-family wget gzip bash
-RUN wget -q -O service.sh http://gridvis.janitza.de/download/${VERSION}/GridVis-Service-${VERSION}-unix.sh
+RUN wget -q -O service.sh https://gridvis.janitza.de/download/${VERSION}/GridVis-Service-${VERSION}-unix.sh
 RUN sh service.sh -q -varfile /response.varfile
 
 FROM balenalib/armv7hf-alpine-openjdk:8--3.10-run
