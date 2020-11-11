@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 ENV HOME /root
 
-ENV VERSION 7.5.26
+ENV VERSION 7.5.40
 
 COPY response.varfile /response.varfile
 RUN export DEBIAN_FRONTEND=noninteractive \
