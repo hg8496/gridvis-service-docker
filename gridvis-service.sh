@@ -15,7 +15,7 @@ then
 fi
 
 ADD_PARAMS=''
-if [ -n "START_PARAMS" ] && [ "START_PARAMS" != "NONE" ]
+if [ -n "$START_PARAMS" ] && [ "$START_PARAMS" != "NONE" ]
 then
     ADD_PARAMS="$START_PARAMS"
 fi
