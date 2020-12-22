@@ -18,6 +18,7 @@ RUN wget -q -O service.sh https://gridvis.janitza.de/download/${VERSION}/GridVis
 ENV USER_TIMEZONE UTC
 ENV USER_LANG en
 ENV FEATURE_TOGGLES NONE
+ENV START_PARAMS NONE
 
 VOLUME ["/opt/GridVisData", "/opt/GridVisProjects"]
 COPY gridvis-service.sh /gridvis-service.sh

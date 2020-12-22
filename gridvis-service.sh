@@ -13,4 +13,11 @@ if [ -n "$STARTUP_GROOVY" ] && [ "$STARTUP_GROOVY" != "NONE" ]
 then                                                                           
     GROOVY_PARAM="--groovy $STARTUP_GROOVY"                         
 fi
-exec /usr/local/GridVisService/bin/server -J-Duser.timezone=${USER_TIMEZONE:-UTC} --locale ${USER_LANG:-en} -J-Dfile.encoding=${FILE_ENCODING:-UTF-8} $FEATURE_PARAMS $GROOVY_PARAM
+
+ADD_PARAMS=''
+if [ -n "START_PARAMS" ] && [ "START_PARAMS" != "NONE" ]
+then
+    ADD_PARAMS="$START_PARAMS"
+fi
+
+exec /usr/local/GridVisService/bin/server $ADD_PARAMS -J-Duser.timezone=${USER_TIMEZONE:-UTC} --locale ${USER_LANG:-en} -J-Dfile.encoding=${FILE_ENCODING:-UTF-8} $FEATURE_PARAMS $GROOVY_PARAM
