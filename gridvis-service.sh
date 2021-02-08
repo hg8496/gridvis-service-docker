@@ -20,4 +20,6 @@ then
     ADD_PARAMS="$START_PARAMS"
 fi
 
-exec xvfb-run -a /usr/local/GridVisService/bin/server $ADD_PARAMS -J-Duser.timezone=${USER_TIMEZONE:-UTC} --locale ${USER_LANG:-en} -J-Dfile.encoding=${FILE_ENCODING:-UTF-8} $FEATURE_PARAMS $GROOVY_PARAM
+Xvfb :1 -screen 0 800x600x24+32 &
+export DISPLAY=:1
+exec /usr/local/GridVisService/bin/server $ADD_PARAMS -J-Duser.timezone=${USER_TIMEZONE:-UTC} --locale ${USER_LANG:-en} -J-Dfile.encoding=${FILE_ENCODING:-UTF-8} $FEATURE_PARAMS $GROOVY_PARAM
