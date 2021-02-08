@@ -5,7 +5,7 @@ ENV HOME /root
 ENV VERSION 7.5.65
 
 COPY response.varfile /response.varfile
-RUN apk add --no-cache openjdk8-jre fontconfig ttf-ubuntu-font-family wget gzip bash
+RUN apk add --no-cache openjdk8-jre fontconfig ttf-ubuntu-font-family wget gzip bash xvfb xvfb-run fmt
 RUN wget -q -O service.sh https://gridvis.janitza.de/download/${VERSION}/GridVis-Service-${VERSION}-unix.sh \
     && sh service.sh -q -varfile /response.varfile \
     && rm service.sh \
