@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 ENV HOME /root
 
-ENV VERSION 7.5.65
+ENV VERSION 7.5.66-SNAPSHOT
 
 COPY response.varfile /response.varfile
 RUN useradd -r gridvis -u 101 && apt update && apt -y install openjdk-8-jre fontconfig ttf-ubuntu-font-family wget gzip bash xvfb libgtk-3-0 libxss1&& rm -rf /var/lib/apt/lists/*
