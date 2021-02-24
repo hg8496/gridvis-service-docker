@@ -23,9 +23,10 @@ ENV USER_LANG en
 ENV FEATURE_TOGGLES NONE
 ENV START_PARAMS NONE
 
+USER gridvis
+
 VOLUME ["/opt/GridVisData", "/opt/GridVisProjects"]
 COPY gridvis-service.sh /gridvis-service.sh
 
 EXPOSE 8080
-USER gridvis
 CMD ["/gridvis-service.sh"]
