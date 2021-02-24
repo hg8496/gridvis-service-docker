@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 AS builder
+FROM ubuntu:18.04 AS builder
 
 ENV HOME /root
 
@@ -10,7 +10,7 @@ RUN wget -q -O service.sh https://gridvis.janitza.de/download/${VERSION}/GridVis
 RUN sh service.sh -q -varfile /response.varfile \
 RUN sed -i 's#default_userdir.*$#default_userdir=/opt/GridVisData#' /usr/local/GridVisService/etc/server.conf
 
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 RUN useradd -r gridvis -u 101 && apt update && apt -y install openjdk-8-jre fontconfig ttf-ubuntu-font-family xvfb libgtk-3-0 libxss1 libgbm1 && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /usr/local/GridVisService /usr/local/GridVisService
