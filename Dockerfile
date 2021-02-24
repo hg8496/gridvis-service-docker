@@ -16,7 +16,7 @@ RUN useradd -r gridvis -u 101 && apt update && apt -y install openjdk-8-jre font
 COPY --from=builder /usr/local/GridVisService /usr/local/GridVisService
 
 RUN mkdir /opt/GridVisData \
- && chown gridvis -R /opt/GridVisData /usr/local/GridVisService \
+ && chown gridvis -R /opt/GridVisData \
  && ln -s /opt/GridVisData/license2.lic /usr/local/GridVisService/license2.lic \
  && ln -s /opt/GridVisData/security.properties /opt/security.properties 
 
