@@ -1,7 +1,7 @@
 FROM alpine:3.10 AS builder
 
 ENV HOME /root
-ENV VERSION 7.5.67
+ENV VERSION 8.0.0
 
 COPY response.varfile /response.varfile
 
