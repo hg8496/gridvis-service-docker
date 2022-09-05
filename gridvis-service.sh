@@ -15,5 +15,7 @@ if [ $STARTUP_GROOVY != "NONE" ]
 then                                                                           
     GROOVY_PARAM="--groovy $STARTUP_GROOVY"                         
 fi
-exec /usr/local/GridVisService/bin/server -J-Duser.timezone=$USER_TIMEZONE --locale $USER_LANG -J-Dfile.encoding=$FILE_ENCODING $FEATURE_PARAMS $GROOVY_PARAM
+exec /usr/local/GridVisService/bin/server -J-Duser.timezone=$USER_TIMEZONE \
+    --locale $USER_LANG -J-Dfile.encoding=$FILE_ENCODING \
+    -J-Dnetbeans.logger.console=true $FEATURE_PARAMS $GROOVY_PARAM
 
